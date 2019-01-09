@@ -38,7 +38,7 @@ DataSampleConfig = dict(
     b_beta=1
 )
 """
-dict: Conventional sampling configuration template to pass to data class `sample()` method:
+dict: Conventional sampling configuration template to pass to the data class `sample()` method:
 
 ```sample = my_data.sample(**DataSampleConfig)```
 """
@@ -49,7 +49,7 @@ EnvResetConfig = dict(
     trial_config=copy.deepcopy(DataSampleConfig),
 )
 """
-dict: Conventional reset configuration template to pass to environment `reset()` method:
+dict: Conventional reset configuration template to pass to the environment `reset()` method:
 
 ```observation = env.reset(**EnvResetConfig)```
 """
@@ -58,7 +58,7 @@ dict: Conventional reset configuration template to pass to environment `reset()`
 class BTgymBaseData:
     """
     Base BTgym data provider class.
-    Provides core data loading, sampling, splitting  and converting functionality.
+    Provides core data loading, sampling, splitting and converting functionality.
     Do not use directly.
 
     Enables Pipe::
@@ -107,20 +107,20 @@ class BTgymBaseData:
 
             specific_params Sampling
 
-            sample_class_ref:               None - if not None, than sample() method will return instance of specified
-                                            class, which itself must be subclass of BaseBTgymDataset,
+            sample_class_ref:               None - if not None, than sthe ample() method will return an instance of a specified
+                                            class, which itself must be a subclass of BaseBTgymDataset,
                                             else returns instance of the base data class.
 
-            start_weekdays:                 [0, 1, 2, 3, ] - Only weekdays from the list will be used for sample start.
-            start_00:                       True - sample start time will be set to first record of the day
+            start_weekdays:                 [0, 1, 2, 3, ] - Only weekdays from the list will be used for the sample start.
+            start_00:                       True - sample start time will be set to the first record of the day
                                             (usually 00:00).
             sample_duration:                {'days': 1, 'hours': 23, 'minutes': 55} - Maximum sample time duration
                                             in days, hours, minutes
             time_gap:                       {''days': 0, hours': 5, 'minutes': 0} - Data omittance threshold:
                                             maximum no-data time gap allowed within sample in days, hours.
-                                            Thereby, if set to be < 1 day, samples containing weekends and holidays gaps
+                                            Thereby, if set to be < 1 day, samples containing weekends and holiday gaps
                                             will be rejected.
-            test_period:                    {'days': 0, 'hours': 0, 'minutes': 0} - setting this param to non-zero
+            test_period:                    {'days': 0, 'hours': 0, 'minutes': 0} - setting this param to a non-zero
                                             duration forces instance.data split to train / test subsets with test
                                             subset duration equal to `test_period` with `time_gap` tolerance. Train data
                                             always precedes test one:
@@ -765,7 +765,7 @@ class BTgymBaseData:
         Samples continuous subset of data,
         such as entire episode records lie within positions specified by interval.
         Episode start position within interval is drawn from beta-distribution parametrised by `b_alpha, b_beta`.
-        By default distribution is uniform one.
+        By default, distribution is a uniform one.
 
         Args:
             interval:       tuple, list or 1d-array of integers of length 2: [lower_row_number, upper_row_number];
@@ -945,7 +945,7 @@ class BTgymBaseData:
         Samples continuous subset of data,
         such as entire episode records lie within positions specified by interval
         Episode start position within interval is drawn from beta-distribution parametrised by `b_alpha, b_beta`.
-        By default distribution is uniform one.
+        By default distribution is a uniform one.
 
         Args:
             interval:       tuple, list or 1d-array of integers of length 2: [lower_row_number, upper_row_number];
@@ -1140,9 +1140,3 @@ class BTgymBaseData:
         new_instance.metadata['last_row'] = last_row
 
         return new_instance
-
-
-
-
-
-

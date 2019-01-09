@@ -42,8 +42,8 @@ sys.path.insert(0,'..')
 
 class Launcher():
     """
-    Configures and starts distributed TF training session with workers
-    running sets of separate instances of BTgym/Atari environment.
+    Configures and starts a distributed TF training session with workers
+    running sets of separate instances of the BTgym/Atari environments.
 
     """
 
@@ -85,10 +85,10 @@ class Launcher():
             cluster_config:     dictionary containing at least these keys:
                                 - 'host':         cluster host, def: '127.0.0.1'
                                 - 'port':         cluster port, def: 12222
-                                - 'num_workers':  number of workers to run, def: 1
-                                - 'num_ps':       number of parameter servers, def: 1
-                                - 'num_envs':     number of environments to run in parallel for each worker, def: 1
-                                - 'log_dir':      directory to save model and summaries, def: './tmp/btgym_aac_log'
+                                - 'num_workers':  number of workers to run, default: 1
+                                - 'num_ps':       number of parameter servers, default: 1
+                                - 'num_envs':     number of environments to run in parallel for each worker, default: 1
+                                - 'log_dir':      directory to save model and summaries, default: './tmp/btgym_aac_log'
 
         """
 
@@ -201,7 +201,7 @@ class Launcher():
 
     def _make_workers_spec(self):
         """
-        Creates list of workers specifications.
+        Creates a list of worker's specifications.
         Returns:
             list of dict
         """
@@ -263,7 +263,7 @@ class Launcher():
 
     def _make_cluster_spec(self, config):
         """
-        Composes cluster specification dictionary.
+        Composes a cluster specification dictionary.
         """
         cluster = {}
         all_ps = []
@@ -287,7 +287,7 @@ class Launcher():
 
     def clear_port(self, port_list):
         """
-        Kills process on specified ports list, if any.
+        Kills a process on a specified port's list, if any.
         """
         if not isinstance(port_list, list):
             port_list = [port_list]
@@ -301,7 +301,7 @@ class Launcher():
 
     def _update_config_dict(self, old_dict, new_dict=None):
         """
-        Service, updates nested dictionary with values from other one of same structure.
+        Service, updates nested dictionary with values from another dictionary of the same structure.
 
         Args:
             old_dict:   dict to update to
@@ -399,8 +399,8 @@ class Launcher():
 
     def export_checkpoint(self, save_path):
         """
-        Helper function: copies last saved checkpoint files to specified location;
-        usually to serve as pre-trained model.
+        Helper function: copies the last saved checkpoint files to a specified location;
+        usually to serve as a pre-trained model.
 
         Args:
             save_path:  path to copy checkpoint files to;
@@ -423,11 +423,3 @@ class Launcher():
         p = os.popen('cp -R ' + source + '/* ' + target)
 
         self.log.notice('copied to: {}'.format(target))
-
-
-
-
-
-
-
-

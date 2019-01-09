@@ -59,7 +59,7 @@ def __norm_value(current_value, start_value, drawdown_call, target_call, epsilon
 
 def decayed_result(trade_result, current_value, start_value, drawdown_call, target_call, gamma=1.0):
     """
-    Normalized in [-1,1] trade result, lineary decayed wrt current_value.
+    Normalized in [-1,1] trade result, linearly decayed wrt current_value.
     """
     target_value = start_value * (1 + target_call / 100)
     value_range = start_value * (drawdown_call + target_call) / 100

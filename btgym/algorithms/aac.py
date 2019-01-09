@@ -38,10 +38,10 @@ from btgym.spaces import ActionDictSpace as BaseAcSpace
 class BaseAAC(object):
     """
     Base Asynchronous Advantage Actor Critic algorithm framework class with auxiliary control tasks and
-    option to run several instances of environment for every worker in vectorized fashion, PAAC-like.
+    the option to run several instances of the environment for every worker in a vectorized fashion, PAAC-like.
     Can be configured to run with different losses and policies.
 
-    Auxiliary tasks implementation borrows heavily from Kosuke Miyoshi code, under Apache License 2.0:
+    The auxiliary tasks implementation borrows heavily from Kosuke Miyoshi code, under Apache License 2.0:
     https://miyosuda.github.io/
     https://github.com/miyosuda/unreal
 
@@ -178,22 +178,22 @@ class BaseAAC(object):
                 There are two alternatives to run RNN part of policy estimator:
 
                 a. Feed initial RNN state for every experience frame in rollout
-                        (those are stored anyway if we want random memory repaly sampling) and do single time-step RNN
+                        (those are stored anyway if we want random memory replay sampling) and do a single time-step RNN
                         advance for all experiences in a batch; this is when time_flat=True;
 
-                b. Reshape incoming batch after convolution part of network in time-wise fashion
+                b. Reshape incoming batch after convolution part of network in a time-wise fashion
                         for every rollout in a batch i.e. batch_size=number_of_rollouts and
                         rnn_timesteps=max_rollout_length. In this case we need to feed initial rnn_states
                         for rollouts only. There is some little extra work to pad rollouts to max_time_size
                         and feed true rollout lengths to rnn. Thus, when time_flat=False, we unroll RNN in
-                        specified number of time-steps for every rollout.
+                        a specified number of time-steps for every rollout.
 
-                Both options has pros and cons:
+                Both options have pros and cons:
 
                 Unrolling dynamic RNN is computationally more expensive but gives clearly faster convergence,
                     [possibly] due to the fact that RNN states for 2nd, 3rd, ... frames
-                    of rollouts are computed using updated policy estimator, which is supposed to be
-                    closer to optimal one. When time_flattened, every time-step uses RNN states computed
+                    of rollouts are computed using the updated policy estimator, which is supposed to be
+                    closer to the optimal one. When time_flattened=True, every time-step uses RNN states computed
                     when rollout was collected (i.e. by behavioral policy estimator with older
                     parameters).
 
@@ -923,7 +923,7 @@ class BaseAAC(object):
         WARNING: _new_trial=True is quick fix, TODO: fix it properly!
         Returns environment configuration parameters for next episode to sample.
         By default is simple stateful iterator,
-        works correctly with `DTGymDataset` data class, repeating cycle:
+        works correctly with `BTGymDataset` data class, repeating cycle:
             - sample `num_train_episodes` from train data,
             - sample `num_test_episodes` from test data.
 
@@ -1398,9 +1398,9 @@ class BaseAAC(object):
                 # When doing more than one epoch, we actually use only last summary:
                 for i in range(self.num_epochs - 1):
                     fetched = sess.run(fetches, feed_dict=feed_dict)
-                    
+
                 run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
-                run_metadata = tf.RunMetadata()    
+                run_metadata = tf.RunMetadata()
 
                 fetched = sess.run(fetches_last,
                                    feed_dict=feed_dict,
@@ -1514,20 +1514,20 @@ class Unreal(BaseAAC):
         Note:
             - On `time_flat` arg:
 
-                There are two alternatives to run RNN part of policy estimator:
+                There are two alternatives to run the RNN part of the policy estimator:
 
                 a. Feed initial RNN state for every experience frame in rollout
                         (those are stored anyway if we want random memory repaly sampling) and do single time-step RNN
                         advance for all experiences in a batch; this is when time_flat=True;
 
-                b. Reshape incoming batch after convolution part of network in time-wise fashion
+                b. Reshape incoming batch after the convolution part of the network in time-wise fashion
                         for every rollout in a batch i.e. batch_size=number_of_rollouts and
                         rnn_timesteps=max_rollout_length. In this case we need to feed initial rnn_states
                         for rollouts only. There is some little extra work to pad rollouts to max_time_size
-                        and feed true rollout lengths to rnn. Thus, when time_flat=False, we unroll RNN in
+                        and feed the true rollout lengths to the rnn. Thus, when time_flat=False, we unroll RNN in
                         specified number of time-steps for every rollout.
 
-                Both options has pros and cons:
+                Both options have pros and cons:
 
                 Unrolling dynamic RNN is computationally more expensive but gives clearly faster convergence,
                     [possibly] due to the fact that RNN states for 2nd, 3rd, ... frames
@@ -1537,7 +1537,7 @@ class Unreal(BaseAAC):
                     parameters).
 
                 Nevertheless, time_flatting can be interesting
-                    because one can safely shuffle training batch or mix on-policy and off-policy data in single mini-batch,
+                    because one can safely shuffle training batch or mix on-policy and off-policy data in a single mini-batch,
                     ensuring iid property and allowing, say, proper batch normalisation (this has yet to be tested).
         """
         try:
@@ -1662,5 +1662,3 @@ class PPO(BaseAAC):
             name='PPO',
             **kwargs
         )
-
-

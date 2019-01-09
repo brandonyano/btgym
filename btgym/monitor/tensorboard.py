@@ -48,7 +48,7 @@ class BTgymMonitor():
                  **kwargs):
         """
         Monitor parameters:
-        Sets of names for every value category: scalars, images, histograms ant text.
+        Sets of names for every value category: scalars, images, histograms and text.
         logdir - tensorboard log directory;
         subdir - this monitor log subdirectory;
         port - localhost webpage addr to look at;

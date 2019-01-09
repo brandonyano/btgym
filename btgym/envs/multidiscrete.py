@@ -32,23 +32,23 @@ from btgym.envs.base import BTgymEnv
 
 class MultiDiscreteEnv(BTgymEnv):
     """
-    OpenAI Gym API shell for Backtrader backtesting/trading library with multiply data streams (assets) support.
-    Action space is dictionary of discrete actions for every asset.
+    OpenAI Gym API shell for Backtrader backtesting/trading library with multiple data streams (assets) supported.
+    Action space is a dictionary of discrete actions for every asset.
 
     Multi-asset setup explanation:
 
-        1. This environment expects Dataset to be instance of `btgym.datafeed.multi.BTgymMultiData`, which sets
-        number,  specifications and sampling synchronisation for historic data for all assets
-        one want to trade jointly.
+        1. This environment expects the Dataset to be an instance of `btgym.datafeed.multi.BTgymMultiData`, which sets
+        number, specifications and sampling synchronisation for historic data for all assets
+        one wants to trade jointly.
 
         2. Internally every episodic asset data is converted to single bt.feed and added to environment strategy
-        as separate named data-line (see backtrader docs for extensive explanation of data-lines concept). Strategy is
+        as a separate named data-line (see backtrader docs for extensive explanation of data-lines concept). Strategy is
         expected to properly handle all received data-lines.
 
         3. btgym.spaces.ActionDictSpace and order execution. Strategy expects to receive separate action
-        for every asset in form of dictionary: `{asset_name_1: action, ..., asset_name_K: action}`
+        for every asset in the form of a dictionary: `{asset_name_1: action, ..., asset_name_K: action}`
         for K assets added, and issues orders for all assets within a single strategy step.
-        It is supposed that actions are discrete [for this environment] and same for every asset.
+        It is supposed that actions are discrete [for this environment] and the same for every asset.
         Base actions are set by strategy.params.portfolio_actions, defaults are: ('hold', 'buy', 'sell', 'close') which
         equals to `gym.spaces.Discrete` with depth `N=4 (~number of actions: 0, 1, 2, 3)`.
         That is, for `K` assets environment action space will be a shallow dictionary `(DictSpace)` of discrete spaces:
@@ -375,4 +375,3 @@ class MultiDiscreteEnv(BTgymEnv):
         self.closed = False
 
         self.log.info('Environment is ready.')
-

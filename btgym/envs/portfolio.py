@@ -33,16 +33,16 @@ from btgym.envs.base import BTgymEnv
 
 class PortfolioEnv(BTgymEnv):
     """
-        OpenAI Gym API shell for Backtrader backtesting/trading library with multiply assets support.
-        Action space is dictionary of contionious  actions for every asset.
+        OpenAI Gym API shell for Backtrader backtesting/trading library with multiply assets supported.
+        Action space is dictionary of contionious actions for every asset.
         This setup closely relates to continuous portfolio optimisation problem definition.
 
         Setup explanation:
 
             0. Problem definition.
-            Consider setup with one riskless asset acting as broker account cash and K (by default - one) risky assets.
-            For every risky asset there exists track of historic price records referred as `data-line`.
-            Apart from assets data lines there possibly exists number of exogenous data lines holding some
+            Consider a setup with one riskless asset acting as broker account cash and K (by default - one) risky assets.
+            For every risky asset there exists a track of historic price records referred to as `data-line`.
+            Apart from assets data lines there possibly exists a number of exogenous data lines holding some
             information and statistics, e.g. economic indexes, encoded news, macroeconomic indicators, weather forecasts
             etc. which are considered relevant and valuable for decision-making.
             It is supposed for this setup that:
@@ -53,15 +53,15 @@ class PortfolioEnv(BTgymEnv):
             v. time indexes match for all data lines provided;
 
             1. Assets and datalines.
-            This environment expects Dataset to be instance of `btgym.datafeed.multi.BTgymMultiData`, which sets
-            number,  specifications and sampling synchronisation for historic data for all assets and data lines.
+            This environment expects the Dataset to be an instance of `btgym.datafeed.multi.BTgymMultiData`, which sets
+            number, specifications and sampling synchronisation for historic data for all assets and data lines.
 
             Namely, one should define data_config dictionary of `data lines` and list of `assets`.
             `data_config` specifies all data sources used by strategy, while `assets` defines subset of `data lines`
             which is supposed to hold historic data for risky portfolio assets.
 
-            Internally every episodic asset data is converted to single bt.feed and added to environment strategy
-            as separate named data_line (see backtrader docs for extensive explanation of data_lines concept).
+            Internally every episodic asset data is converted to a single bt.feed and added to the environment strategy
+            as a separate named data_line (see backtrader docs for extensive explanation of data_lines concept).
             Every non-asset data line as also added as bt.feed with difference that it is not 'tradable' i.e. it is
             impossible to issue trade orders on such line.
             Strategy is expected to properly handle all received data-lines.
@@ -92,10 +92,10 @@ class PortfolioEnv(BTgymEnv):
 
             2. btgym.spaces.ActionDictSpace and order execution.
             ActionDictSpace is an extension of OpenAI Gym DictSpace providing domain-specific functionality.
-            Strategy expects to receive separate action for every K+1 asset in form of dictionary:
+            Strategy expects to receive a separate action for every K+1 asset in the form of dictionary:
             `{cash_name: a[0], asset_name_1: a[1], ..., asset_name_K: a[K]}` for K risky assets added,
             where base actions are real numbers: `a[i] in [0,1], 0<=i<=K, SUM{a[i]} = 1`. Whole action should be
-            interpreted as order to adjust portfolio to have share `a[i] * 100% for i-th  asset`.
+            interpreted as an order to adjust portfolio to have share `a[i] * 100% for i-th  asset`.
 
             Therefore, base actions are gym.spaces.Box and for K assets environment action space will be a shallow
             DictSpace of K+1 continuous spaces: `{cash_name: gym.spaces.Box(low=0, high=1),
@@ -142,11 +142,11 @@ class PortfolioEnv(BTgymEnv):
                     which says to broker: "... adjust positions to get 30% in base EUR asset (cash), and amounts of
                     10%, 10%, 20% and 30% off current portfolio value in CHF, GBP, JPY respectively".
 
-                    Note that under the hood broker uses `order_target_percent` for every risky asset and can issue
+                    Note that under the hood the broker uses `order_target_percent` for every risky asset and can issue
                     'sell', 'buy' or 'close' orders depending on positive/negative difference of current to desired
                     share of asset.
 
-            3. Observation space: is nested DictSpace, where 'external' part part of space should hold specifications
+            3. Observation space: is a nested DictSpace, where the 'external' part of a space should hold specifications
             for every data line added (note that cash asset does not have it's own data line).
 
                 Example::

@@ -237,9 +237,9 @@ class BTgymCasualDataDomain(BTgymRandomDataDomain):
     and enabling sampling control according to it.
 
     Objective is to enable proper train/evaluation/test data split and prevent data leakage by
-     allowing training on known, past data only and testing on unknown, future data, providing realistic training cycle.
+     allowing training on known, past data only and testing on unknown, future data, providing a realistic training cycle.
 
-    Source trials set is defined as all trials starting somewhere in past and ending no later than current time point,
+    Source trials set is defined as all trials starting somewhere in the past and ending no later than the current time point,
     and target trials set as set of trials such as: trial test period starts somewhere in the past and ends at
     current time point and trial test period starts from now on for all time points in available dataset range.
 

@@ -37,7 +37,7 @@ def make_data_getter(queue):
 
 class Rollout(dict):
     """
-    Experience rollout as [nested] dictionary of lists of ndarrays, tuples and rnn states.
+    Experience rollout as a [nested] dictionary of lists of ndarrays, tuples and rnn states.
     """
 
     def __init__(self):
@@ -46,7 +46,7 @@ class Rollout(dict):
 
     def add(self, values, _struct=None):
         """
-        Adds single experience frame to rollout.
+        Adds a single experience frame to rollout.
 
         Args:
             values:    [nested] dictionary of values.
@@ -96,15 +96,15 @@ class Rollout(dict):
 
     def add_memory_sample(self, sample):
         """
-        Given replay memory sample as list of experience-dictionaries of `length`,
-        converts it to rollout of same `length`.
+        Given replay memory sample as a list of experience-dictionaries of `length`,
+        converts it to a rollout of same `length`.
         """
         for frame in sample:
             self.add(frame)
 
     def process(self, gamma, gae_lambda=1.0, size=None, time_flat=False):
         """
-        Converts single-trajectory rollout of experiences to dictionary of ready-to-feed arrays.
+        Converts single-trajectory rollout of experiences to a dictionary of ready-to-feed arrays.
         Computes rollout returns and the advantages.
         Pads with zeroes to desired length, if size arg is given.
 
@@ -166,7 +166,7 @@ class Rollout(dict):
 
     def process_rp(self, reward_threshold=0.1):
         """
-        Processes rollout process()-alike and estimates reward prediction target for first n-1 frames.
+        Processes rollout process()-like and estimates reward prediction target for first n-1 frames.
 
         Args:
             reward_threshold:   reward values such as |r|> reward_threshold are classified as neg. or pos.
@@ -200,7 +200,7 @@ class Rollout(dict):
 
     def get_frame(self, idx, _struct=None):
         """
-        Extracts single experience from rollout.
+        Extracts a single experience from rollout.
 
         Args:
             idx:    experience position
@@ -229,7 +229,7 @@ class Rollout(dict):
 
     def pop_frame(self, idx, _struct=None):
         """
-        Pops single experience from rollout.
+        Pops a single experience from rollout.
 
         Args:
             idx:    experience position

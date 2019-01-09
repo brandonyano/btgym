@@ -27,8 +27,8 @@ def conv2d_encoder(x,
         reuse:          bool
 
     Returns:
-        list of tensors holding encoded features for every layer outer to inner,
-        level-wise list of encoding layers shapes, first ro last.
+        A list of tensors holding encoded features for every layer, outer to inner,
+        level-wise list of encoding layers shapes, first to last.
 
     """
     with tf.variable_scope(name, reuse=reuse):
@@ -67,11 +67,11 @@ def conv2d_decoder(z,
                    name='decoder',
                    reuse=False):
     """
-    Defines convolutional decoder.
+    Defines the convolutional decoder.
 
     Args:
         z:                  tensor holding encoded state
-        layer_shapes:       level-wise list of matching encoding layers shapes, last to first.
+        layer_shapes:       level-wise list of matching encoding layer's shapes, last to first.
         layer_config:       layers configuration list: [layer_1_config, layer_2_config,...], where:
                             layer_i_config = [num_filters(int), filter_size(list), stride(list)]
         pad:                str, padding scheme: 'SAME' or 'VALID'
@@ -80,7 +80,7 @@ def conv2d_decoder(z,
         reuse:              bool
 
     Returns:
-        list of tensors holding decoded features for every layer inner to outer
+        list of tensors holding decoded features for every layer, inner to outer
 
     """
     with tf.variable_scope(name, reuse=reuse):
@@ -134,7 +134,7 @@ def conv2d_autoencoder(
     ):
     """
     Basic convolutional autoencoder.
-    Hidden state is passed through dense linear layer.
+    Hidden state is passed through a dense linear layer.
 
     Args:
         inputs:             input tensor
@@ -200,8 +200,8 @@ def cw_conv2d_autoencoder(
     ):
     """
     Channel-wise convolutional autoencoder.
-    Hidden state is passed through dense linear layer.
-    Pain-slow, do not use.
+    Hidden state is passed through a dense linear layer.
+    Painfully slow, do not use.
 
     Args:
         inputs:             input tensor
@@ -420,7 +420,7 @@ class KernelMonitor():
 
     def _iterate(self, sess, signal, kernel_index):
         """
-        Returns the loss and grads for specified kernel given the input signal
+        Returns the loss and gradients for specified kernel given the input signal
 
         Args:
             sess:           tf.Session object

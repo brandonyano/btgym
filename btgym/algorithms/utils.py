@@ -12,7 +12,7 @@ from itertools import product
 
 def rnn_placeholders(state):
     """
-    Given nested [multilayer] RNN state tensor, infers and returns state placeholders.
+    Given nested a [multilayer] RNN state tensor, infers and returns state placeholders.
 
     Args:
         state:  tf.nn.lstm zero-state tuple.
@@ -35,7 +35,7 @@ def rnn_placeholders(state):
 
 def nested_placeholders(ob_space, batch_dim=None, name='nested'):
     """
-    Given nested observation space as dictionary of shape tuples,
+    Given a nested observation space as dictionary of shape tuples,
     returns nested state batch-wise placeholders.
 
     Args:
@@ -55,9 +55,9 @@ def nested_placeholders(ob_space, batch_dim=None, name='nested'):
 
 def nested_discrete_gym_shape(ac_space):
     """
-    Given instance of gym.spaces.Dict holding base  gym.spaces.Discrete,
-    returns nested dictionary of  spaces depths ( =dict of gym.spaces.Discrete.n)
-    This util is here due to fact in practice we need .n attr of discrete space [as cat. encoding depth]
+    Given an instance of gym.spaces.Dict holding base gym.spaces.Discrete,
+    returns a nested dictionary of spaces depths ( =dict of gym.spaces.Discrete.n)
+    This util is here due to the fact in practice we need .n attr of discrete space [as cat. encoding depth]
      rather than .shape, which is always ()
 
     Args:
@@ -78,7 +78,7 @@ def nested_discrete_gym_shape(ac_space):
 
 def flat_placeholders(ob_space, batch_dim=None, name='flt'):
     """
-    Given nested observation space as dictionary of shape tuples,
+    Given a nested observation space as a dictionary of shape tuples,
     returns flattened dictionary of batch-wise placeholders.
 
     Args:
@@ -139,7 +139,7 @@ def feed_dict_rnn_context(placeholders, values):
 
 def as_array(struct):
     """
-    Given a dictionary of lists or tuples returns dictionary of np.arrays of same structure.
+    Given a dictionary of lists or tuples, returns a dictionary of np.arrays of same structure.
 
     Args:
         struct: dictionary of list, tuples etc.
@@ -159,7 +159,7 @@ def as_array(struct):
 
 def batch_stack(dict_list, _top=True):
     """
-    Stacks values of given processed rollouts along batch dimension.
+    Stacks values of given processed rollouts along the batch dimension.
     Cumulative batch dimension is saved as key 'batch_size' for further shape inference.
 
     Example:
@@ -197,7 +197,7 @@ def batch_stack(dict_list, _top=True):
     if _top:
         # Mind shape inference:
         batch['batch_size'] = batch['batch_size'].sum()
-        
+
     return batch
 
 
@@ -280,7 +280,7 @@ def batch_pad(batch, to_size, _one_hot=False):
 
 def is_subdict(sub_dict, big_dict):
     """
-    Checks if first arg is sub_dictionary of second arg by means of structure and values.
+    Checks if first arg is a sub_dictionary of second arg by means of structure and values.
 
     Args:
         sub_dict:       dictionary

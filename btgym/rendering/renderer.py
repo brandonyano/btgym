@@ -126,7 +126,7 @@ class BTgymRendering():
 
     def to_string(self, dictionary, excluded=[]):
         """
-        Converts given dictionary to more-or-less good looking `text block` string.
+        Converts given dictionary to a more-or-less good looking `text block` string.
         """
         text = ''
         for k, v in dictionary.items():
@@ -202,7 +202,7 @@ class BTgymRendering():
     def render(self, mode_list, cerebro=None, step_to_render=None, send_img=True):
         """
         Renders given mode if possible, else
-        just passes last already rendered image.
+        just passes the last already rendered image.
         Returns rgb image as numpy array.
 
         Logic:
@@ -431,7 +431,7 @@ class BTgymRendering():
     def draw_episode(self, cerebro):
         """
         Hacky way to render episode.
-        Due to backtrader/matplotlib memory leaks have to encapsulate it in separate process.
+        Due to backtrader/matplotlib memory leaks, have to encapsulate it in separate process.
         Strange but reliable. PID's are driving crazy.
 
         Args:

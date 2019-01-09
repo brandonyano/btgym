@@ -8,7 +8,7 @@ try:
     from pykalman import KalmanFilter
 
 except ImportError:
-    raise ImportError('Locally required package `pykalman` seems not be installed.')
+    raise ImportError('Locally required package `pykalman` doesnt seem to be installed.')
 
 PairModelObservation = namedtuple(
     'PairModelObservation',
@@ -274,7 +274,7 @@ class PairFilteredModel:
     def sample_state_fn(batch_size, state, mu_as_mean=True):
         """
         Generates batch of realisations given model hidden state Z.
-        Static method, can be used as stand-along function.
+        Static method, can be used as stand alone function.
 
         Args:
             batch_size:     number of sample to draw
@@ -333,7 +333,7 @@ class PairFilteredModel:
         """
         Generates batch of realisations of pair base 1d processes given model hidden state Z in fully sequential
         fashion i.e. state value Psi is re-sampled for every X[i].
-        Static method, can be used as stand-along function.
+        Static method, can be used as stand alone function.
 
         Args:
             batch_size:     uint, number of trajectories to generates
@@ -452,7 +452,7 @@ class PairFilteredModel:
 
 class HighLowSpreadModel:
     """
-    Modells `High/Low` (bid/ask) spread dynamics at step `t`
+    Models `High/Low` (bid/ask) spread dynamics at step `t`
     as normally distributed random variable conditioned on one-step data increments.
     Fits `Open` dynamics as t-distributed univariate random variable.
     """
@@ -816,9 +816,3 @@ class PairDataModel:
             ohl_batch = None
 
         return decomposed_batch, ohl_batch
-
-
-
-
-
-

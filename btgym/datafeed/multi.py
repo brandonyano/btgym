@@ -13,7 +13,7 @@ import pandas as pd
 
 class BTgymMultiData:
     """
-    Multiply data streams wrapper.
+    Multiple data streams wrapper.
     """
 
     def __init__(
@@ -53,7 +53,7 @@ class BTgymMultiData:
                 'jpy': {'filename': '.../DAT_ASCII_EURJPY_M1_2017.csv'},
                 'chf': {'filename': '.../DAT_ASCII_EURCHF_M1_2017.csv'},
             }
-            It is user responsibility to correctly choose historic data conversion rates wrt cash currency (here - EUR).
+            It is the user's responsibility to correctly choose historic data conversion rates wrt cash currency (here - EUR).
         """
         self.data_class_ref = data_class_ref
         if data_config is None:
@@ -239,7 +239,3 @@ class BTgymMultiData:
             # Rename every base btfeed according to data_config keys:
             feed[key] = feed_dict[list(feed_dict.keys())[0]]
         return feed
-
-
-
-

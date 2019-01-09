@@ -25,7 +25,7 @@ def _process_frame42(frame):
 class AtariRescale42x42(gym.ObservationWrapper):
     """
     Gym wrapper, pipes Atari into BTgym algorithms, as later expect observations to be DictSpace.
-    Makes Atari environment return state as dictionary with single key 'external' holding
+    Makes Atari environment return state as a dictionary with a single key 'external' holding
     normalized in [0,1] grayscale 42x42 visual output.
     """
     # TODO: INPRoGRESS: dict observation space, include metadata etc.

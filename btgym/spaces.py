@@ -121,7 +121,7 @@ class ActionDictSpace(DictSpace):
 
     def encode(self, action):
         """
-        Given action returns it's encoding.
+        Given action, returns it's encoding.
         Encoding method depends on type of base actions:
         - if base actions defined are discrete (gym.spaces.Discrete), binary encoding is used;
         - if base actions defined are continuous(gym.spaces.Box),
@@ -137,7 +137,7 @@ class ActionDictSpace(DictSpace):
 
     def decode(self, code):
         """
-        Given code returns action.
+        Given code, returns action.
         Encoding method depends on type of base actions:
         - if base actions defined are discrete (gym.spaces.Discrete), binary encoding is used;
         - if base actions defined are continuous(gym.spaces.Box),
@@ -153,7 +153,7 @@ class ActionDictSpace(DictSpace):
 
     def one_hot_encode(self, action):
         """
-        Given action returns it's encoding.
+        Given action, returns it's encoding.
         Encoding method depends on type of base actions:
         - if base actions defined are discrete (gym.spaces.Discrete), one_hot encoding is used;
         - if base actions defined are continuous(gym.spaces.Box),
@@ -202,7 +202,7 @@ class ActionDictSpace(DictSpace):
 
     def _action_to_binary(self, action):
         """
-        Given action returns it binary encoding
+        Given action, returns it's binary encoding
 
         Args:
             action:     action from this space (shallow dictionary)
@@ -235,7 +235,7 @@ class ActionDictSpace(DictSpace):
 
     def _action_to_vec(self, action):
         """
-        Given action returns its vector encoding.
+        Given action, returns its vector encoding.
 
         Args:
             action:     action from this space (shallow dictionary)
@@ -254,7 +254,7 @@ class ActionDictSpace(DictSpace):
 
     def _vec_to_action(self, vector):
         """
-        Given vector encoding of an action returns action from this space.
+        Given vector encoding of an action, returns action from this space.
 
         Args:
             vector:     iterable of scalars
@@ -447,7 +447,3 @@ class __DictSpace(Space):
         # By default, assume identity is JSONable
         #return sample_n
         raise NotImplementedError
-
-
-
-

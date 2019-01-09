@@ -13,7 +13,7 @@ class AMLDG_1(GuidedAAC):
 
     Does not relies on sub-AAC classes.
 
-    TODO: Use per-episode replay buffer distribution support as in AMLDG_d instead of single previous rollout
+    TODO: Use per-episode replay buffer distribution support as in AMLDG_d instead of a single previous rollout
 
     Papers:
         Da Li et al.,
@@ -415,4 +415,3 @@ class AMLDG_1(GuidedAAC):
                   '\n\nPress `Ctrl-C` or jupyter:[Kernel]->[Interrupt] for clean exit.\n'
             self.log.exception(msg)
             raise RuntimeError(msg)
-

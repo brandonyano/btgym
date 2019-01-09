@@ -45,14 +45,14 @@ class BTgymSequentialDataDomain(BTgymRandomDataDomain):
 
             train interval: 8 days, 0:00:00; test interval: 2 days, 0:00:00.
 
-        Then first trial intervals will be (note that omitted data periods like holidays will not be counted,
+        Then, first trial intervals will be (note that omitted data periods like holidays will not be counted,
         so overall trial duration is dilated to get proper number of records)::
 
             Trial #0 @: 2016-01-03 17:01:00 <--> 2016-01-17 17:05:00,
             and last two days will be reserved for test data
 
         Since `reset_data()` method call, every next call to `BTgymSequentialDataDomain.sample()` method will return
-        Trial object, such as::
+        a Trial object, such as::
 
             train_start_time_next_trial = `test_end_time_previous_trial + 1_time_unit
 
@@ -203,7 +203,7 @@ class BTgymSequentialDataDomain(BTgymRandomDataDomain):
 
     def reset(self, global_step=0, total_steps=None, skip_frame=10, data_filename=None, **kwargs):
         """
-        [Re]starts sampling iterator from specified position.
+        [Re]starts sampling iterator from a specified position.
 
         Args:
             data_filename:  Str or list of str, file_names containing CSV historic data;
@@ -324,5 +324,3 @@ class BTgymSequentialDataDomain(BTgymRandomDataDomain):
             trial = self._sample_interval(interval, name='sequential_trial_')
             self.sample_num += 1
             return trial
-
-

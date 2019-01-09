@@ -22,7 +22,7 @@ def normalized_columns_initializer(std=1.0):
 
 def categorical_sample(logits, depth):
     """
-    Given logits returns one-hot encoded categorical sample.
+    Given logits, returns one-hot encoded categorical sample.
     Args:
         logits:
         depth:

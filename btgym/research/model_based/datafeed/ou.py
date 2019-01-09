@@ -36,7 +36,7 @@ class UniformOUGenerator(BaseCombinedDataSet):
     - realisations of Ornstein-Uhlenbeck process as train data;
     - real historic data as test data;
 
-    OUp. paramters are randomly uniformly sampled from given intervals.
+    OUp. paramaters are randomly uniformly sampled from given intervals.
     """
     def __init__(self, ou_mu, ou_lambda, ou_sigma, ou_x0=None, name='UniformOUData', **kwargs):
         """
@@ -286,7 +286,7 @@ class PairWaveModelGenerator(BasePairDataGenerator):
 
     def sample(self, sample_type=0, broadcast_message=None, **kwargs):
         """
-        Overrides base method by employing single underlying stochastic process to generate two tragectories
+        Overrides base method by employing single underlying stochastic process to generate two trajectories
         Args:
             sample_type:    bool, train/test
             **kwargs:
@@ -438,5 +438,3 @@ class PairWaveModelDataSet(BaseCombinedDataSet):
             name=name,
             **kwargs
         )
-
-

@@ -8,10 +8,10 @@ from btgym.algorithms.launcher.base import Launcher
 class MetaLauncher(Launcher):
     """
     Launcher class with extended functionality to support gradient-based meta-learning algorithms.
-    For every distributed worker it configures two master/slave environments such that that slave environment
-    always runs same data trial as master one.
-    Typically master environment is configured to run episodes from train data of the trial and salve one - from test
-    data. With AAC framework properly set up it enables single worker to estimate meta-loss by collecting relevant
+    For every distributed worker, it configures two master/slave environments such that the slave environment
+    always runs the same data trial as master one.
+    Typically, a master environment is configured to run episodes from train data of the trial and save one - from test
+    data. With the AAC framework properly set up, it enables a single worker to estimate meta-loss by collecting relevant
     test and train trajectories in parallel.
     """
 
@@ -20,8 +20,8 @@ class MetaLauncher(Launcher):
 
         Args:
             cluster_config:     environment class_config_dict
-            render_slave_env:   bool, if True - rendering enabled for slave environment; master otherwise.
-            **kwargs:           same as base class args: btgym.algorithms.launcher.Launcher
+            render_slave_env:   bool, if True - rendering enabled for the slave environment; master otherwise.
+            **kwargs:           same as the base class args: btgym.algorithms.launcher.Launcher
         """
         meta_cluster_config = dict(
             host='127.0.0.1',
@@ -46,7 +46,7 @@ class MetaLauncher(Launcher):
 
     def _make_workers_spec(self):
         """
-        Creates list of workers specifications.
+        Creates list of worker's specifications.
         Overrides base class method. Sets master/slave pair of environments for every worker.
 
         Returns:

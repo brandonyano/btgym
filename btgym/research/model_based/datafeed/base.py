@@ -75,7 +75,7 @@ def base_generator_parameters_fn(**kwargs):
 def base_random_uniform_parameters_fn(**kwargs):
     """
     Provides samples for kwargs given.
-    If parameter is set as float - returns exactly given value;
+    If parameter is set as float - returns exact given value;
     if parameter is set as iterable of form [a, b] - uniformly randomly samples parameters value
     form given interval.
 
@@ -101,7 +101,7 @@ def base_random_uniform_parameters_fn(**kwargs):
 
 def base_spread_generator_fn(num_points=10, alpha=1, beta=1, minimum=0, maximum=0):
     """
-    Generates spread values for single synthetic tragectory. Samples drawn from parametrized beta-distribution;
+    Generates spread values for single synthetic trajectory. Samples drawn from parametrized beta-distribution;
     If base generated trajectory P is given, than High/Ask value = P + 1/2 * Spread; Low/Bid value = P - 1/2* Spread
 
     Args:
@@ -833,4 +833,3 @@ class BasePairCombinedDataSet(BaseCombinedDataSet):
             name=name,
             **kwargs
         )
-

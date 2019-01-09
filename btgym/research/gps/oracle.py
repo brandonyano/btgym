@@ -37,9 +37,9 @@ class Oracle():
 
     def filter_by_margine(self, lst, threshold):
         """
-        Filters out peaks by their 'value' difference withing tolerance given.
-        Filtering is done from first to last index by removing every succeeding element of list from now on
-        if its value difference with value in hand is less than given threshold.
+        Filters out peaks by their 'value' difference within the tolerance given.
+        Filtering is done from first to last index by removing every succeeding element of the list from now on
+        if its value difference with value in hand is less than the given threshold.
 
         Args:
             lst:        list of tuples; each tuple is (value, index)
@@ -316,8 +316,3 @@ class Oracle2():
         data = np.stack([v_high, v_low], axis=-1).mean(axis=-1)
 
         return data
-
-
-
-
-

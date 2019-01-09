@@ -49,7 +49,7 @@ class Worker(multiprocessing.Process):
     """
     Distributed tf worker class.
 
-    Sets up environment, trainer and starts training process in supervised session.
+    Sets up environment, trainer and starts training process in a supervised session.
     """
     env_list = None
 
@@ -90,10 +90,10 @@ class Worker(multiprocessing.Process):
 
             Note:
                 - Conventional `self.global_step` refers to number of environment steps,
-                    summarized over all environment instances, not to number of policy optimizer train steps.
+                    summarized over all environment instances, not to the number of policy optimizer train steps.
 
-                - Every worker can run several environments in parralell, as specified by `cluster_config'['num_envs'].
-                    If use 4 forkers and num_envs=4 => total number of environments is 16. Every env instance has
+                - Every worker can run several environments in parallel, as specified by `cluster_config'['num_envs'].
+                    If 4 workers and num_envs=4 => total number of environments is 16. Every env instance has
                     it's own ThreadRunner process.
 
                 - When using replay memory, keep in mind that every ThreadRunner is keeping it's own replay memory,
@@ -398,6 +398,3 @@ class Worker(multiprocessing.Process):
         except Exception as e:
             self.log.exception(e)
             raise e
-
-
-

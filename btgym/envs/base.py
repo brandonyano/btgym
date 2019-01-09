@@ -577,7 +577,7 @@ class BTgymEnv(gym.Env):
             self.socket = None
 
     def _force_control_mode(self):
-        """Puts BT server to control mode.
+        """Puts BT server in control mode.
         """
         # Check is there any faults with server process and connection?
         network_error = [
@@ -1044,5 +1044,3 @@ class BTgymEnv(gym.Env):
 
         else:
             pass
-
-

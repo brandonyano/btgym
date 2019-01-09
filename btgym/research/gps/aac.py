@@ -10,14 +10,13 @@ class GuidedAAC(BaseAAC):
     Actor-critic framework augmented with expert actions imitation loss:
     L_gps = aac_lambda * L_a3c + guided_lambda * L_im.
 
-    This implementation is loosely refereed as 'guided policy search' after algorithm described in paper
+    This implementation is loosely referred to as 'guided policy search' after algorithm described in paper
     by S. Levine and P. Abbeel `Learning Neural Network Policies with Guided PolicySearch under Unknown Dynamics`
+    in a sense that exploits idea of fitting a 'local' (here - single episode) oracle for the environment with
+    generally unknown dynamics and use actions demonstrated by it to optimize the trajectory distribution for the training agent.
 
-    in a sense that exploits idea of fitting 'local' (here - single episode) oracle for environment with
-    generally unknown dynamics and use actions demonstrated by it to optimize trajectory distribution for training agent.
-
-    Note that this particular implementation of expert does not provides
-    complete action-state space trajectory for agent to follow.
+    Note that this particular implementation of expert does not provide
+    a complete action-state space trajectory for agent to follow.
     Instead it estimates `advised` categorical distribution over actions conditioned on `external` (i.e. price dynamics)
     state observations only.
 
@@ -147,4 +146,3 @@ class VerboseGuidedAAC(GuidedAAC):
             aux_render_modes=aux_render_modes,
             **kwargs
         )
-

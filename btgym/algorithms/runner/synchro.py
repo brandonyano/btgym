@@ -12,11 +12,11 @@ from btgym.algorithms.utils import is_subdict
 class BaseSynchroRunner():
     """
     Data provider class. Interacts with environment and outputs data in form of rollouts augmented with
-    relevant summaries and metadata. This runner is `synchronous` in sense that data collection is `in-process'
-    and every rollout is collected by explicit call to respective `get_data()` method [this is unlike 'async-`
+    relevant summaries and metadata. This runner is `synchronous` in the sense that data collection is 'in-process'
+    and every rollout is collected by an explicit call to the respective `get_data()` method [this is unlike 'async-'
     thread-runner version found earlier in this this package which, once being started,
     runs on its own and can not be moderated].
-    Makes precise control on policy being executed possible.
+    Makes precise control on the policy being executed possible.
     Does not support 'atari' mode.
     """
 
@@ -168,7 +168,7 @@ class BaseSynchroRunner():
 
     def start(self, sess, summary_writer, init_context=None, data_sample_config=None):
         """
-        Executes initial sequence; fills initial replay memory if any.
+        Executes initial sequence; fills initial replay memory, if any.
         """
         assert self.policy is not None, 'Initial policy not specified'
         self.sess = sess
@@ -192,7 +192,7 @@ class BaseSynchroRunner():
 
     def get_init_experience(self, policy, policy_sync_op=None, init_context=None, data_sample_config=None):
         """
-        Starts new environment episode.
+        Starts a new environment episode.
 
         Args:
             policy:                 policy to execute.
@@ -277,7 +277,7 @@ class BaseSynchroRunner():
 
     def get_experience(self, policy, state, context, action, reward, policy_sync_op=None):
         """
-        Get single experience (possibly terminal).
+        Get a single experience (possibly terminal).
 
         Returns:
             incomplete experience as dictionary (misses bootstrapped R value),
@@ -331,7 +331,7 @@ class BaseSynchroRunner():
 
     def get_train_stat(self, is_test=False):
         """
-        Updates and computes average statistics for train episodes.
+        Updates and computes the average statistics for train episodes.
         Args:
             is_test: bool, current episode type
 
@@ -364,7 +364,7 @@ class BaseSynchroRunner():
 
     def get_test_stat(self, is_test=False):
         """
-        Updates and computes  statistics for single test episode.
+        Updates and computes statistics for a single test episode.
 
         Args:
             is_test: bool, current episode type
@@ -387,7 +387,7 @@ class BaseSynchroRunner():
     def get_ep_render(self, is_test=False):
         """
         Collects environment renderings. Relies on environment renderer class methods,
-        so it is only valid when environment rendering is enabled (typically it is true for master runner).
+        so it is only valid when environment rendering is enabled (typically it is true for the master runner).
 
         Returns:
             dictionary of images as rgb arrays
@@ -421,7 +421,7 @@ class BaseSynchroRunner():
             force_new_episode=False
     ):
         """
-        Collects single trajectory rollout and bunch of summaries using specified policy.
+        Collects single trajectory rollout and a bunch of summaries using specified policy.
         Updates episode statistics and replay memory.
 
         Args:
@@ -566,8 +566,8 @@ class BaseSynchroRunner():
             data_sample_config=None
     ):
         """
-        Returns batch as list of 'size' or more rollouts collected under specified policy.
-        Rollouts can be collected from several episodes consequently; there is may be more rollouts than set 'size' if
+        Returns a batch as a list of 'size' or more rollouts collected under the specified policy.
+        Rollouts can be collected from several episodes consequently; there is maybe more rollouts than set 'size' if
         it is necessary to collect at least one terminal rollout.
 
         Args:
@@ -582,7 +582,7 @@ class BaseSynchroRunner():
 
         Returns:
             dict containing:
-            'data'key holding list of data dictionaries;
+            'data' key holding list of data dictionaries;
             'terminal_context' key holding list of terminal output contexts.
             If 'require_terminal = True, this list is guarantied to hold at least one element.
         """
@@ -776,7 +776,7 @@ class VerboseSynchroRunner(BaseSynchroRunner):
     def get_ep_render(self, is_test=False):
         """
         Collects episode, environment and policy visualisations. Relies on environment renderer class methods,
-        so it is only valid when environment rendering is enabled (typically it is true for master runner).
+        so it is only valid when environment rendering is enabled (typically it is true for the master runner).
 
         Returns:
             dictionary of images as rgb arrays
@@ -866,12 +866,3 @@ class VerboseSynchroRunner(BaseSynchroRunner):
                 _ = self.get_data()
             self.log.notice('Memory filled')
         self.log.notice('started collecting data.')
-
-
-
-
-
-
-
-
-

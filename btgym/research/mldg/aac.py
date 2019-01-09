@@ -11,7 +11,7 @@ from btgym.algorithms.nn.layers import noisy_linear
 
 class SubAAC(GuidedAAC):
     """
-    Sub AAC trainer as lower-level part of meta-optimisation algorithm.
+    Sub AAC trainer as lower-level part of the meta-optimisation algorithm.
     """
 
     def __init__(
@@ -109,7 +109,7 @@ class AMLDG():
     Asynchronous implementation of MLDG algorithm (by Da Li et al.)
     for one-shot adaptation in dynamically changing environments.
 
-    This class is AAC wrapper; relies on sub-AAC classes to make separate policy networks
+    This class is an AAC wrapper; relies on sub-AAC classes to make separate policy networks
     for train/test data streams, performs data streams synchronization according to algorithm logic
     via data_config dictionaries; performs actual data checks to prevent test information leakage.
 

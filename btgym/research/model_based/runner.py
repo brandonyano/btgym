@@ -4,7 +4,7 @@ from btgym.algorithms.runner.synchro import BaseSynchroRunner
 
 class OUpRunner(BaseSynchroRunner):
     """
-    Extends `BaseSynchroRunner` class with additional summaries related to Orn-Uhl. data generating process.
+    Extends `BaseSynchroRunner` class with additional summaries related to the Orn-Uhl. data generating process.
     """
 
     def __init__(self, name='OUp_synchro', **kwargs):
@@ -62,4 +62,3 @@ class OUpRunner(BaseSynchroRunner):
             self.dgp_params = {key: [] for key in self.env.observation_space.shape['metadata']['generator'].keys()}
             # print('ep_stat: ', ep_stat)
         return ep_stat
-

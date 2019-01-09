@@ -78,9 +78,9 @@ class CA3C(GuidedAAC):
 
     def get_sample_config(self, **kwargs):
         """
-        Returns environment configuration parameters for next episode to sample.
+        Returns environment configuration parameters for the next episode to sample.
 
-        Here we always prescribe to sample test episode from source or target domain.
+        Here, we always prescribe to the sample the test episode from source or target domain.
 
         Args:
               kwargs:     not used
@@ -493,5 +493,3 @@ class CA3Ca(CA3C):
             sess.run(self.local_network.meta.send_stat_op)
 
             self.local_steps += 1
-
-

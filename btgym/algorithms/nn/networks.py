@@ -30,7 +30,7 @@ def conv_2d_network(x,
                     keep_prob=None,
                     **kwargs):
     """
-    Stage1 network: from preprocessed 2D input to estimated features.
+    Stage1 network: from a preprocessed 2D input to estimated features.
     Encapsulates convolutions + layer normalisation + nonlinearity. Can be shared.
 
     Returns:
@@ -242,7 +242,7 @@ def dense_rp_network(x, linear_layer_ref=noisy_linear):
 
 def pixel_change_2d_estimator(ob_space, pc_estimator_stride=(2, 2), **kwargs):
     """
-    Defines tf operation for estimating `pixel change` as subsampled absolute difference of two states.
+    Defines a tf operation for estimating `pixel change` as subsampled absolute difference of two states.
 
     Note:
         crops input array by one pix from either side; --> 1D signal to be shaped as [signal_length, 3]
@@ -300,5 +300,3 @@ def duelling_pc_network(x,
     pc_q = pc_v + pc_a - pc_a_mean  # [None, 20, 20, ac_size]
 
     return pc_q
-
-

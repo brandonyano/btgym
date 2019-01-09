@@ -258,7 +258,7 @@ class BTgymServer(multiprocessing.Process):
         Args:
             cerebro:                backtrader.cerebro engine class.
             render:                 render class
-            network_address:        environmnet communication, str
+            network_address:        environment communication, str
             data_network_address:   data communication, str
             connect_timeout:        seconds, int
             log_level:              int, logbook.level
@@ -399,7 +399,7 @@ class BTgymServer(multiprocessing.Process):
 
     def get_trial_message(self):
         """
-        Prepares  message containing current trial instance, mimicking data_server message protocol.
+        Prepares message containing current trial instance, mimicking data_server message protocol.
         Intended for serving requests from data_slave environment.
 
         Returns:

@@ -38,7 +38,7 @@ def BaseEnvRunnerFn(
         log:                    logbook logger
 
     Yelds:
-        collected data as dictionary of on_policy, off_policy rollouts and episode statistics.
+        collected data as a dictionary of on_policy, off_policy rollouts and episode statistics.
     """
     try:
         if memory_config is not None:

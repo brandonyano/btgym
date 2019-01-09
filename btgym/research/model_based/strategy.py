@@ -15,7 +15,7 @@ from btgym.research.model_based.model import PairFilteredModel
 
 class MonoSpreadOUStrategy_0(BaseStrategy5):
     """
-    Expects spread as single generated data stream.
+    Expects spread as a single generated data stream.
     """
     # Time embedding period:
     time_dim = 128  # NOTE: changed this --> change Policy  UNREAL for aux. pix control task upsampling params
@@ -236,7 +236,7 @@ class MonoSpreadOUStrategy_0(BaseStrategy5):
     def get_reward(self):
         """
         Shapes reward function as normalized single trade realized profit/loss,
-        augmented with potential-based reward shaping functions in form of:
+        augmented with potential-based reward shaping functions in the form of:
         F(s, a, s`) = gamma * FI(s`) - FI(s);
         Potential FI_1 is current normalized unrealized profit/loss.
 
@@ -430,7 +430,7 @@ class PairSpreadStrategy_0(MonoSpreadOUStrategy_0):
 
     def can_add_up(self):
         """
-        Checks if there enough cash left to open synthetic spread position
+        Checks if there is enough cash left to open synthetic spread position
 
         Returns:
             True if possible, False otherwise

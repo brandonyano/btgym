@@ -55,11 +55,11 @@ class BaseAacPolicy(object):
             **kwargs            not used
         """
         assert isinstance(ob_space, DictSpace), \
-            'Expected observation space be instance of btgym.spaces.DictSpace, got: {}'.format(ob_space)
+            'Expected observation space to be an instance of btgym.spaces.DictSpace, got: {}'.format(ob_space)
         self.ob_space = ob_space
 
         assert isinstance(ac_space, ActionDictSpace), \
-            'Expected action space be instance of btgym.spaces.ActionDictSpace, got: {}'.format(ac_space)
+            'Expected action space to be an instance of btgym.spaces.ActionDictSpace, got: {}'.format(ac_space)
 
         assert ac_space.base_space == Discrete, \
             'Base policy restricted to gym.spaces.Discrete base action spaces, got: {}'.format(ac_space.base_space)
@@ -403,7 +403,7 @@ class Aac1dPolicy(BaseAacPolicy):
                  aux_estimate=True,
                  **kwargs):
         """
-        Defines [partially shared] on/off-policy networks for estimating  action-logits, value function,
+        Defines [partially shared] on/off-policy networks for estimating action-logits, value function,
         reward and state 'pixel_change' predictions.
         Expects bi-modal observation as dict: `external`, `internal`.
 
@@ -436,4 +436,3 @@ class Aac1dPolicy(BaseAacPolicy):
             aux_estimate,
             **kwargs
         )
-

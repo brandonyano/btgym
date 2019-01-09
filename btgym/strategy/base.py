@@ -193,7 +193,7 @@ class BTgymBaseStrategy(bt.Strategy):
             self.skip_frame = self.p.skip_frame
         except KeyError:
             pass
-        
+
         self.iteration = 0
         self.env_iteration = 0
         self.inner_embedding = 1
@@ -364,7 +364,7 @@ class BTgymBaseStrategy(bt.Strategy):
             self.next_process_fn = self._next_discrete
 
             # Do not repeat action for discrete:
-            self.num_action_repeats = 0 
+            self.num_action_repeats = 0
 
     def prenext(self):
         self.update_broker_stat()
@@ -652,9 +652,9 @@ class BTgymBaseStrategy(bt.Strategy):
 
     def get_state(self):
         """
-        Collects estimated values for every mode of observation space by calling methods from
+        Collects estimated values for every mode of the observation space by calling methods from
         `collection_get_state_methods` dictionary.
-        As a rule, this method should not be modified, override or implement corresponding get_[mode]_state() methods,
+        As a rule, this method should not be modified. Override or implement corresponding get_[mode]_state() methods,
         defining necessary calculations and return arbitrary shaped tensors for every space mode.
 
         Note:
@@ -736,8 +736,8 @@ class BTgymBaseStrategy(bt.Strategy):
 
     def get_info(self):
         """
-        Composes information part of environment response,
-        can be any object. Override to own taste.
+        Composes the information part of the environment response,
+        can be any object. Override to your own taste.
 
         Note:
             Due to 'skip_frame' feature, INFO part of environment response transmitted by server can be  a list
@@ -759,7 +759,7 @@ class BTgymBaseStrategy(bt.Strategy):
         """
         Episode termination estimator,
         defines any trading logic conditions episode stop is called upon, e.g. <OMG! Stop it, we became too rich!>.
-        It is just a structural a convention method. Default method is empty.
+        It is just a structural convention method. Default method is empty.
 
         Expected to return:
             tuple (<is_done, type=bool>, <message, type=str>).
@@ -903,4 +903,3 @@ class BTgymBaseStrategy(bt.Strategy):
                 single_action = round(float(action[asset]) * 0.9, 2)
                 self.order = self.order_target_percent(data=asset, target=single_action )
                 self.broker_message += ' new {}->{:1.0f}% created; '.format(asset, single_action * 100)
-

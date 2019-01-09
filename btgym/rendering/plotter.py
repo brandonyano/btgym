@@ -36,7 +36,7 @@ class BTgymPlotter(Plot_OldSync):
 
     def savefig(self, fig, filename, width=16, height=9, dpi=300, tight=True,):
         """
-        We neither need picture to appear in <stdout> nor file to be written to disk (slow).
+        We neither need a picture to appear in <stdout> nor a file to be written to disk (slow).
         Just set params and return `fig` to be converted to rgb array.
         """
         fig.set_size_inches(width, height)
@@ -89,4 +89,3 @@ class DrawCerebro(multiprocessing.Process):
             raise RuntimeError('Can not perform episode rendering.\n' +
                                'Hint: check storage consumption or use: render_enabled=False')
         return None
-

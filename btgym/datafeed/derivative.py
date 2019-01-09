@@ -26,7 +26,7 @@ class BTgymEpisode(BTgymBaseData):
     """
     Low-level data class.
     Implements `Episode` object containing single episode data sequence.
-    Doesnt allows further sampling and data loading.
+    Doesn't allow further sampling and data loading.
     Supposed to be converted to bt.datafeed object via .to_btfeed() method.
     Do not use directly.
     """
@@ -110,10 +110,10 @@ class BTgymDataTrial(BTgymBaseData):
 
 class BTgymRandomDataDomain(BTgymBaseData):
     """
-    Top-level data class. Implements one way data domains can be defined,
+    Top-level data class. Implements one way that data domains can be defined,
     namely when source domain precedes and target one. Implements pipe::
 
-        Domain.sample() --> Trial.sample() --> Episode.to_btfeed() --> bt.Startegy
+        Domain.sample() --> Trial.sample() --> Episode.to_btfeed() --> bt.Strategy
 
     This particular class randomly samples Trials from provided dataset.
 
@@ -250,12 +250,12 @@ class BTgymRandomDataDomain(BTgymBaseData):
 
 class BTgymDataset(BTgymRandomDataDomain):
     """
-    Simple top-level data class, implements direct random episode sampling from data set induced by csv file,
+    Simple top-level data class, implements direct random episode sampling from a data set induced by a csv file,
     i.e it is a special case for `Trial=def=Episode`.
     Supports source and target data domains separation with some caveat - see Note.
 
     Note:
-        Due to current implementation sampling test episode actually requires sampling test TRIAL.
+        Due to current implementation, sampling a test episode actually requires sampling test TRIAL.
         To be improved.
 
     """
@@ -449,4 +449,3 @@ class BTgymDataset2(BTgymRandomDataDomain):
             data_names=data_names,
             log_level=log_level,
         )
-

@@ -31,7 +31,7 @@ class RegressionTestPolicy(BaseAacPolicy):
                  regression_type='simple',
                  **kwargs):
         """
-        Defines [partially shared] on/policy networks for estimating  action-logits, value function,
+        Defines [partially shared] on/policy networks for estimating action-logits, value function,
         reward and state 'pixel_change' predictions.
         Expects multi-modal observation as array of shape `ob_space`.
 
@@ -415,8 +415,8 @@ class RegressionTestPolicy(BaseAacPolicy):
 
         RNN_2 (upper) context is reset:
             - every `lstm_2_init_period' episodes;
-            - episode  initial `state` `trial_num` metadata has been changed form last call (new train trial started);
-            - episode metatdata `type` is non-zero (test episode);
+            - episode  initial `state` `trial_num` metadata has been changed from last call (new train trial started);
+            - episode metadata `type` is non-zero (test episode);
             - no context arg is provided (initial episode of training);
             - ... else carries context on to new episode;
 
@@ -515,4 +515,3 @@ class RegressionTestPolicy(BaseAacPolicy):
         # print('action_pack: ', action_pack)
 
         return action_pack, logits, value, context, regression
-

@@ -46,7 +46,7 @@ class DomainTest(unittest.TestCase):
     def test_BTgymDataset_sampling_bounds_consistency(self):
         """
         Any train trial mast precede any test period.
-        Same true for train/test episodes.
+        Same is true for train/test episodes.
         """
         domain = BTgymDataset(
           filename=filename,
@@ -80,7 +80,7 @@ class DomainTest(unittest.TestCase):
     def test_BTgymRandomDataDomain_sampling_bounds_consistency(self):
         """
         Any train trial mast precede any test period.
-        Same true for train/test episodes.
+        Same is true for train/test episodes.
         """
         rnd_domain = BTgymRandomDataDomain(
             filename=filename,
@@ -138,7 +138,7 @@ class DomainTest(unittest.TestCase):
     def _BTgymSequentialDataDomain_sampling_bounds_consistency(self):
         """
         Any train trial mast precede any test period.
-        Same true for train/test episodes.
+        Same is true for train/test episodes.
         """
         seq_domain = BTgymSequentialDataDomain(
             filename=filename,
@@ -192,7 +192,3 @@ class DomainTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
-

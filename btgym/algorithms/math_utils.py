@@ -88,7 +88,7 @@ def softmax(a, axis=None):
 
 def sample_dp(logits, alpha=200.0):
     """
-    Given vector of unnormalised log probabilities,
+    Given a vector of unnormalised log probabilities,
     returns sample of probability distribution taken from induced Dirichlet Process,
     where `logits` define DP mean and `alpha` is inverse variance.
 
@@ -100,4 +100,3 @@ def sample_dp(logits, alpha=200.0):
         vector of probabilities
     """
     return softmax(np.random.multivariate_normal(mean=logits, cov=np.eye(logits.shape[-1]) * alpha ** -1))
-

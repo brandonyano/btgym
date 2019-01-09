@@ -16,14 +16,14 @@ class RunnerThread(threading.Thread):
     Async. framework code comes from OpenAI repository under MIT licence:
     https://github.com/openai/universe-starter-agent
 
-    Despite the fact BTgym is not real-time environment [yet], thread-runner approach is still here. From
+    Despite the fact that BTgym is not real-time environment [yet], thread-runner approach is still here. From
     original `universe-starter-agent`:
     `...One of the key distinctions between a normal environment and a universe environment
     is that a universe environment is _real time_.  This means that there should be a thread
-    that would constantly interact with the environment and tell it what to do.  This thread is here.`
+    that would constantly interact with the environment and tell it what to do. This thread is here.`
 
-    Another idea is to see ThreadRunner as all-in-one data provider, thus shaping data distribution
-    fed to estimator from single place.
+    Another idea is to see ThreadRunner as an all-in-one data provider, thus shaping the data distribution
+    fed to the estimator from a single place.
     So, replay memory is also here, as well as some service functions (collecting summary data).
     """
     def __init__(self,
@@ -117,4 +117,3 @@ class RunnerThread(threading.Thread):
             # observation.
 
             self.queue.put(next(rollout_provider), timeout=600.0)
-

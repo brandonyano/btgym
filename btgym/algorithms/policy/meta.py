@@ -6,8 +6,8 @@ from btgym.research.casual_conv.policy import CasualConvPolicy_0_0
 
 class MetaSubPolicy:
     """
-    Stateful meta-optimisation policy to be hosted by of behavioral policy.
-    Performs hyper-parameter and other type of meta-optimisation across different instances of hosting policy.
+    Stateful meta-optimisation policy to be hosted by off-behavioral policy.
+    Performs hyper-parameter and other type of meta-optimisations across different instances of hosting policy.
     """
 
     def __init__(self, task, num_host_policies, learn_rate, name='SubMetaPolicy'):
@@ -145,9 +145,3 @@ class CasualMetaPolicy(CasualConvPolicy_0_0):
 
         else:
             print('Task ID or cluster_spec not provided, no meta-policy enabled.')
-
-
-
-
-
-

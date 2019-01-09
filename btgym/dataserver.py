@@ -28,7 +28,7 @@ from .datafeed import DataSampleConfig
 class BTgymDataFeedServer(multiprocessing.Process):
     """
     Data provider server class.
-    Enables efficient data sampling for asynchronous multiply BTgym environments execution.
+    Enables efficient data sampling for asynchronous multiple BTgym environments execution.
     Manages global back-testing time and broadcast messages.
     """
     process = None
@@ -63,7 +63,7 @@ class BTgymDataFeedServer(multiprocessing.Process):
     def get_data(self, sample_config=None):
         """
         Get Trial sample according to parameters received.
-        If no parameters being passed - makes sample with default parameters.
+        If no parameters are being passed - makes sample with default parameters.
 
         Args:
             sample_config:   sampling parameters configuration dictionary

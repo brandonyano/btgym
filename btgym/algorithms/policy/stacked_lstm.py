@@ -39,7 +39,7 @@ class StackedLstmPolicy(BaseAacPolicy):
                  shared_p_v=False,
                  **kwargs):
         """
-        Defines [partially shared] on/off-policy networks for estimating  action-logits, value function,
+        Defines [partially shared] on/off-policy networks for estimating action-logits, value function,
         reward and state 'pixel_change' predictions.
         Expects multi-modal observation as array of shape `ob_space`.
 
@@ -60,11 +60,11 @@ class StackedLstmPolicy(BaseAacPolicy):
         """
 
         assert isinstance(ob_space, DictSpace), \
-            'Expected observation space be instance of btgym.spaces.DictSpace, got: {}'.format(ob_space)
+            'Expected observation space to be an instance of btgym.spaces.DictSpace, got: {}'.format(ob_space)
         self.ob_space = ob_space
 
         assert isinstance(ac_space, ActionDictSpace), \
-            'Expected action space be instance of btgym.spaces.ActionDictSpace, got: {}'.format(ac_space)
+            'Expected action space to be an instance of btgym.spaces.ActionDictSpace, got: {}'.format(ac_space)
 
         self.ac_space = ac_space
         self.rp_sequence_size = rp_sequence_size
@@ -656,9 +656,9 @@ class AacStackedRL2Policy(StackedLstmPolicy):
     `FAST REINFORCEMENT LEARNING VIA SLOW REINFORCEMENT LEARNING`,
     https://arxiv.org/pdf/1611.02779.pdf
 
-    The only difference from Base policy is `get_initial_features()` method, which has been changed
-    either to reset RNN context to zero-state or return context from the end of previous episode,
-    depending on episode metadata received or `lstm_2_init_period' parameter.
+    The only difference from the Base policy is the `get_initial_features()` method, which has been changed
+    either to reset the RNN context to zero-state or to return context from the end of the previous episode,
+    depending on the episode metadata received or `lstm_2_init_period' parameter.
     """
     def __init__(self, lstm_2_init_period=50, **kwargs):
         super(AacStackedRL2Policy, self).__init__(**kwargs)
@@ -673,13 +673,13 @@ class AacStackedRL2Policy(StackedLstmPolicy):
 
         RNN_2 (upper) context is reset:
             - every `lstm_2_init_period' episodes;
-            - episode  initial `state` `trial_num` metadata has been changed form last call (new train trial started);
+            - episode initial `state` `trial_num` metadata has been changed from last call (new train trial started);
             - episode metatdata `type` is non-zero (test episode);
             - no context arg is provided (initial episode of training);
             - ... else carries context on to new episode;
 
         Episode metadata are provided by DataTrialIterator, which is shaping Trial data distribution in this case,
-        and delivered through env.strategy as separate key in observation dictionary.
+        and delivered through env.strategy as a separate key in observation dictionary.
 
         Args:
             state:      initial episode state (result of env.reset())
@@ -717,4 +717,3 @@ class AacStackedRL2Policy(StackedLstmPolicy):
             )
         self.current_ep_num +=1
         return new_context
-

@@ -31,8 +31,8 @@ class TimeDomainTest(unittest.TestCase):
 
     def test_BTgymDataset_sampling_bounds_consistency(self):
         """
-        Any train trial mast precede any test period.
-        Same true for train/test episodes.
+        Any train trial must precede any test period.
+        Same is true for train/test episodes.
         """
         domain = BTgymCasualDataDomain(
             filename=filename,
